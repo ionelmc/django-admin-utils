@@ -5,7 +5,7 @@ import os
 
 setup(
     name = "django-admin-utils",
-    version = "0.1",
+    version = "0.1.1",
     url = 'https://github.com/ionelmc/django-admin-utils',
     download_url = '',
     license = 'BSD',
