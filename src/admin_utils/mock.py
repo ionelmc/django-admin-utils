@@ -1,8 +1,22 @@
 from functools import update_wrapper
+from django.core.urlresolvers import RegexURLPattern
 from django.contrib import admin
+
+class InvalidAdmin(RuntimeError):
+    pass
 
 def make_admin_class(name, urls, app_label, dont_register=False):
     label = app_label
+
+    required_name = "%s_%s_changelist" % (app_label, name.lower())
+    for url in urls:
+        if getattr(url, 'name', None) == required_name:
+            break
+    else:
+        raise InvalidAdmin(
+            "You must have an url with the name %r otherwise the admin "
+            "will fail to reverse it." % required_name
+        )
 
     class _meta:
         abstract = False
@@ -25,7 +39,7 @@ def make_admin_class(name, urls, app_label, dont_register=False):
                 def wrapper(*args, **kwargs):
                     return self.admin_site.admin_view(view)(*args, **kwargs)
                 return update_wrapper(wrapper, view)
-            from django.core.urlresolvers import RegexURLPattern
+
             return [ # they are already prefixed
                 RegexURLPattern(
                     str(url.regex.pattern),

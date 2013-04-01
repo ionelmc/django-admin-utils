@@ -60,3 +60,13 @@ class MockAdminTestCase(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200, response)
         self.assertEqual(response.content, "root", response)
+
+    def test_runtime_error(self):
+        from .admin import make_admin_class, patterns, url
+        from admin_utils.mock import InvalidAdmin
+        self.assertRaises(
+            InvalidAdmin,
+            make_admin_class, "Test", patterns("test_app.views",
+                url(r'^$', 'root', name='whatever'),
+            ), "test_app"
+        )
