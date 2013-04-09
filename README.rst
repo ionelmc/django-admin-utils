@@ -4,6 +4,10 @@
 
 Utility code and patterns. Tested against Python 2.7, 2.6 and Django 1.3, 1.4, 1.5, 1.6 (trunk).
 
+.. image:: https://secure.travis-ci.org/ionelmc/django-admin-utils.png
+    :alt: Build Status
+    :target: http://travis-ci.org/ionelmc/django-admin-utils
+
 Terse admin.py
 ==============
 
