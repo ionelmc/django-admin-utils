@@ -26,6 +26,15 @@ Terse admin.py
     class MyModelAdmin(admin.ModelAdmin):
         inlines = inline(OtherModel),
 
+If you want custom admin sites::
+
+    customsite = admin.AdminSite()
+
+    @register(MyModel, site=customsite)
+    class MyModelAdmin(admin.ModelAdmin):
+        inlines = inline(OherModel),
+
+
 Mock admin (mount your views in admin using model wrappers)
 ===========================================================
 
