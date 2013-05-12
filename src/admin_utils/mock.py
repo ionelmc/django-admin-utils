@@ -5,7 +5,8 @@ from django.contrib import admin
 class InvalidAdmin(RuntimeError):
     pass
 
-def make_admin_class(name, urls, app_label, dont_register=False):
+def make_admin_class(name, urls, app_label, dont_register=False,
+                     site=admin.site):
     label = app_label
 
     required_name = "%s_%s_changelist" % (app_label, name.lower())
@@ -53,7 +54,7 @@ def make_admin_class(name, urls, app_label, dont_register=False):
 
         @classmethod
         def register(cls):
-            admin.site.register((model_class,), cls)
+            site.register((model_class,), cls)
     if not dont_register:
         admin_class.register()
     return admin_class
