@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-def register(model):
-    def decorator(klass, site=admin.site):
+def register(model, site=admin.site):
+    def decorator(klass):
         site.register(model, klass)
         return klass
     return decorator
