@@ -12,6 +12,10 @@ Utility code and patterns. Tested against Python 2.7, 2.6 and Django 1.3, 1.4, 1
     :alt: Coverage Status
     :target: https://coveralls.io/r/ionelmc/django-admin-utils
 
+.. image:: https://badge.fury.io/py/django-admin-utils.png
+    :alt: PYPI Package
+    :target: https://pypi.python.org/pypi/django-admin-utils
+
 Terse admin.py
 ==============
 
