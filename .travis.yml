@@ -1,7 +1,32 @@
 language: python
 python:
-  - "2.7"
-# command to install dependencies
-install: pip install tox 
-# command to run tests
-script: tox
+  - 2.6
+  - 2.7
+  - pypy
+env:
+  global:
+    PYTHONPATH=src:tests
+    PYTHONUNBUFFERED=yes
+    MANHOLE_TEST_TIMEOUT=30
+  matrix:
+    - DJANGO_VERSION=1.3
+    - DJANGO_VERSION=1.4
+    - DJANGO_VERSION=1.5
+    - DJANGO_VERSION=1.6
+    - DJANGO_VERSION=trunk
+  allow_failures:
+    - env: DJANGO_VERSION=trunk
+before_install:
+  - |
+    if python --version |& grep PyPy; then
+      sudo apt-add-repository --yes ppa:pypy/ppa
+      sudo apt-get update
+      sudo apt-get install pypy
+    fi
+install:
+  - pip install tox
+script: tox -v -e py$TRAVIS_PYTHON_VERSION-$DJANGO_VERSION
+after_success:
+  - coverage combine || true
+  - coverage report --show-missing --include='src/*' || true
+  - coveralls || true
