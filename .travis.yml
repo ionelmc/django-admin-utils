@@ -25,7 +25,7 @@ before_install:
     fi
 install:
   - pip install tox
-script: tox -v -e py$TRAVIS_PYTHON_VERSION-$DJANGO_VERSION
+script: tox -v -e py$TRAVIS_PYTHON_VERSION-django$DJANGO_VERSION
 after_success:
   - coverage combine || true
   - coverage report --show-missing --include='src/*' || true
