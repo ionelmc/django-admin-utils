@@ -14,7 +14,9 @@ env:
     - DJANGO_VERSION=1.6
     - DJANGO_VERSION=trunk
   allow_failures:
+
     - env: DJANGO_VERSION=trunk
+      python: pypy
 before_install:
   - |
     deactivate
