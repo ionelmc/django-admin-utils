@@ -19,10 +19,15 @@ env:
 before_install:
   - |
     if python --version |& grep PyPy; then
+      deactivate
       sudo apt-add-repository --yes ppa:pypy/ppa
       sudo apt-get update
       sudo apt-get install pypy
+      source ~/virtualenv/pypy/bin/activate
     fi
+    python --version
+    uname -a
+    lsb_release -a
 install:
   - pip install tox
 script: tox -v -e $TRAVIS_PYTHON_VERSION-$DJANGO_VERSION
