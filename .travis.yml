@@ -13,8 +13,8 @@ env:
     - DJANGO_VERSION=1.5
     - DJANGO_VERSION=1.6
     - DJANGO_VERSION=trunk
+matrix:
   allow_failures:
-
     - env: DJANGO_VERSION=trunk
       python: pypy
 before_install:
