@@ -35,7 +35,7 @@ class MockAdminTestCase(TestCase):
         self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200, response)
-        self.assertEqual(response.content, "root", response)
+        self.assertEqual(response.content, b"root", response)
 
     def test_admin_1_level1(self):
         url = reverse('admin:level-1')
@@ -43,7 +43,7 @@ class MockAdminTestCase(TestCase):
         self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200, response)
-        self.assertEqual(response.content, "level1", response)
+        self.assertEqual(response.content, b"level1", response)
 
     def test_admin_1_level1_level2(self):
         url = reverse('admin:level-2')
@@ -51,7 +51,7 @@ class MockAdminTestCase(TestCase):
         self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200, response)
-        self.assertEqual(response.content, "level2", response)
+        self.assertEqual(response.content, b"level2", response)
 
     def test_admin_2_root(self):
         url = reverse('admin:test_app_test2_changelist')
@@ -59,7 +59,7 @@ class MockAdminTestCase(TestCase):
         self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200, response)
-        self.assertEqual(response.content, "root", response)
+        self.assertEqual(response.content, b"root", response)
 
     def test_runtime_error(self):
         from .admin import make_admin_class, patterns, url
