@@ -35,3 +35,7 @@ after_success:
   - coverage combine || true
   - coverage report --show-missing --include='src/*' || true
   - coveralls || true
+notifications:
+  email:
+    on_success: never
+    on_failure: always
