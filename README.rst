@@ -83,8 +83,10 @@ Example::
     class MyModelAdmin(FoldableListFilterAdminMixin, admin.ModelAdmin):
         pass
 
-.. image:: docs/FoldableListFilterAdminMixin.png
-   :alt: Screenshort of FoldableListFilterAdminMixin
+Looks like this:
+
+    .. image:: docs/FoldableListFilterAdminMixin.png
+       :alt: Screenshort of FoldableListFilterAdminMixin
 
 admin_utils.mixins.FullWidthAdminMixin
 --------------------------------------
