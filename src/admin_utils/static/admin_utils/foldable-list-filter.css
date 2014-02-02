@@ -1,0 +1,18 @@
+#changelist-filter h3 {
+    cursor: pointer;
+    color: #5B80B2;
+}
+#changelist-filter h3:hover {
+    color: #036;
+}
+#changelist-filter h3:before {
+    content: "[-]";
+    font-family: "Courier", monospace;
+    color: #333;
+}
+#changelist-filter h3.closed:before {
+    content: "[+]";
+}
+#changelist-filter h3.closed + ul li:not(.selected) {
+    display: none;
+}
