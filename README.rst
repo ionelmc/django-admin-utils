@@ -16,9 +16,12 @@ Utility code and patterns. Tested against Python 2.7, 2.6 and Django 1.3, 1.4, 1
     :alt: PYPI Package
     :target: https://pypi.python.org/pypi/django-admin-utils
 
-.. image:: https://d2weczhvl823v0.cloudfront.net/ionelmc/django-admin-utils/trend.png
-   :alt: Bitdeli badge
-   :target: https://bitdeli.com/free
+Requirements
+============
+
+:OS: Any
+:Runtime: Python 2.6, 2.7, 3.2, 3.3 or PyPy
+:Packages: Django>=1.1 (including 1.7)
 
 Terse admin.py
 ==============
