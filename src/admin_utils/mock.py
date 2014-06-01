@@ -43,14 +43,15 @@ def make_admin_class(name, urls, app_label, dont_register=False,
                     return self.admin_site.admin_view(view)(*args, **kwargs)
                 return update_wrapper(wrapper, view)
 
-            return [ # they are already prefixed
+            return [  # they are already prefixed
                 RegexURLPattern(
                     str(url.regex.pattern),
                     wrap(url.callback),
                     url.default_args,
                     url.name
-                ) if isinstance(url, RegexURLPattern)
-                  else url
+                )
+                if isinstance(url, RegexURLPattern)
+                else url
                 for url in urls
             ]
 
