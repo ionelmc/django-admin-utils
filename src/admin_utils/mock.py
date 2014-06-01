@@ -2,8 +2,10 @@ from functools import update_wrapper
 from django.core.urlresolvers import RegexURLPattern
 from django.contrib import admin
 
+
 class InvalidAdmin(RuntimeError):
     pass
+
 
 def make_admin_class(name, urls, app_label, dont_register=False,
                      site=admin.site):

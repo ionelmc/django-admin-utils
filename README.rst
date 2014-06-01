@@ -2,26 +2,30 @@
     django-admin-utils
 ===========================
 
-Utility code and patterns. Tested against Python 2.7, 2.6 and Django 1.3, 1.4, 1.5, 1.6 (trunk).
-
-.. image:: https://secure.travis-ci.org/ionelmc/django-admin-utils.png
+.. image:: http://img.shields.io/travis/ionelmc/django-admin-utils/master.png
     :alt: Build Status
-    :target: http://travis-ci.org/ionelmc/django-admin-utils
+    :target: https://travis-ci.org/ionelmc/django-admin-utils
 
-.. image:: https://coveralls.io/repos/ionelmc/django-admin-utils/badge.png?branch=master
+.. image:: http://img.shields.io/coveralls/ionelmc/django-admin-utils/master.png
     :alt: Coverage Status
     :target: https://coveralls.io/r/ionelmc/django-admin-utils
 
-.. image:: https://badge.fury.io/py/django-admin-utils.png
+.. image:: http://img.shields.io/pypi/v/django-admin-utils.png
     :alt: PYPI Package
     :target: https://pypi.python.org/pypi/django-admin-utils
+
+.. image:: http://img.shields.io/pypi/dm/django-admin-utils.png
+    :alt: PYPI Package
+    :target: https://pypi.python.org/pypi/django-admin-utils
+
+Utility code and patterns. 
 
 Requirements
 ============
 
 :OS: Any
 :Runtime: Python 2.6, 2.7, 3.2, 3.3 or PyPy
-:Packages: Django>=1.1 (including 1.7)
+:Packages: Django>=1.4 (including 1.7); Django>=1.1 probably works but it's not tested, those releases should not be used (they are insecure).
 
 Terse admin.py
 ==============

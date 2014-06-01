@@ -12,7 +12,7 @@ setup(
     description="Utility code and patterns.",
     long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
     author='Ionel Cristian Mărieș',
-    author_email = 'contact@ionelmc.ro',
+    author_email='contact@ionelmc.ro',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     include_package_data=True,

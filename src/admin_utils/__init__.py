@@ -1,2 +1,2 @@
-from .brief import inline, register
-from .mock import make_admin_class
+from .brief import inline, register  # noqa
+from .mock import make_admin_class  # noqa
