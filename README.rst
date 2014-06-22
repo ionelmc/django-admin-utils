@@ -3,8 +3,12 @@
 ===========================
 
 .. image:: http://img.shields.io/travis/ionelmc/django-admin-utils/master.png
-    :alt: Build Status
+    :alt: Travis-CI Build Status
     :target: https://travis-ci.org/ionelmc/django-admin-utils
+
+.. image:: https://ci.appveyor.com/api/projects/status/<security-token>/branch/master
+    :alt: AppVeyor Build Status
+    :target: https://ci.appveyor.com/project/ionelmc/django-admin-utils
 
 .. image:: http://img.shields.io/coveralls/ionelmc/django-admin-utils/master.png
     :alt: Coverage Status
