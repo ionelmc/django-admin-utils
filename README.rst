@@ -6,7 +6,7 @@
     :alt: Travis-CI Build Status
     :target: https://travis-ci.org/ionelmc/django-admin-utils
 
-.. image:: https://ci.appveyor.com/api/projects/status/<security-token>/branch/master
+.. image:: https://ci.appveyor.com/api/projects/status/4vtplv2v9dy3b3e6/branch/master
     :alt: AppVeyor Build Status
     :target: https://ci.appveyor.com/project/ionelmc/django-admin-utils
 
