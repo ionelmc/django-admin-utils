@@ -24,7 +24,7 @@ setup(
     download_url='',
     license='BSD',
     description="Utility code and patterns.",
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
+    long_description=read('README.rst'),
     author='Ionel Cristian Mărieș',
     author_email='contact@ionelmc.ro',
     packages=find_packages("src"),
