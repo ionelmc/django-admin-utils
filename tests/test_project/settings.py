@@ -1,5 +1,5 @@
 import os
-TEMPLATE_DEBUG = DEBUG = True
+TEMPLATE_DEBUG = DEBUG = False
 DATABASE_ENGINE = 'sqlite3'
 DATABASE_NAME = os.path.join(os.path.dirname(__file__), 'database.sqlite')
 DATABASES = {
@@ -8,6 +8,7 @@ DATABASES = {
         'NAME': DATABASE_NAME
     },
 }
+ALLOWED_HOSTS = "*"
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,4 +52,3 @@ LOGGING = {
         'propagate': True,
     }
 }
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
