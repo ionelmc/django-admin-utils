@@ -1,22 +1,30 @@
 import os
-TEMPLATE_DEBUG = DEBUG = False
+TEMPLATE_DEBUG = DEBUG = True
 DATABASE_ENGINE = 'sqlite3'
 DATABASE_NAME = os.path.join(os.path.dirname(__file__), 'database.sqlite')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': DATABASE_NAME
+        'NAME': ':memory:',#DATABASE_NAME
     },
 }
+APPEND_SLASH = True
 ALLOWED_HOSTS = "*"
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'test_app',
+)
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.common.CommonMiddleware',
 )
 SITE_ID = 1
 ROOT_URLCONF = 'test_project.urls'
@@ -33,8 +41,8 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level':'DEBUG',
-            'class':'logging.StreamHandler',
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
             'formatter': 'verbose',
             'stream': 'ext://sys.stderr'
         },
@@ -43,7 +51,7 @@ LOGGING = {
         'django': {
             'handlers': ['console'],
             'propagate': True,
-            'level':'DEBUG',
+            'level': 'DEBUG',
         },
     },
     'root': {
