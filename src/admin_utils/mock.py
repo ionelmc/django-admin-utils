@@ -1,6 +1,7 @@
 from functools import update_wrapper
-from django.core.urlresolvers import RegexURLPattern
+
 from django.contrib import admin
+from django.core.urlresolvers import RegexURLPattern
 
 
 class InvalidAdmin(RuntimeError):
@@ -33,9 +34,14 @@ def make_admin_class(name, urls, app_label, dont_register=False,
     model_class = type(name, (object,), {'_meta': _meta})
 
     class admin_class(admin.ModelAdmin):
-        has_add_permission = lambda *args: False
-        has_change_permission = lambda *args: True
-        has_delete_permission = lambda *args: False
+        def has_add_permission(*args):
+            return False
+
+        def has_change_permission(*args):
+            return True
+
+        def has_delete_permission(*args):
+            return False
 
         def get_urls(self):
             def wrap(view):
