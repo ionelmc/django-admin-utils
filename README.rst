@@ -2,25 +2,52 @@
     django-admin-utils
 ===========================
 
-.. image:: http://img.shields.io/travis/ionelmc/django-admin-utils/master.png
+| |docs| |travis| |appveyor| |coveralls| |landscape| |scrutinizer|
+| |version| |downloads| |wheel| |supported-versions| |supported-implementations|
+
+.. |docs| image:: https://readthedocs.org/projects/django-admin-utils/badge/?style=flat
+    :target: https://readthedocs.org/projects/django-admin-utils
+    :alt: Documentation Status
+
+.. |travis| image:: http://img.shields.io/travis/ionelmc/django-admin-utils/master.png?style=flat
     :alt: Travis-CI Build Status
     :target: https://travis-ci.org/ionelmc/django-admin-utils
 
-.. image:: https://ci.appveyor.com/api/projects/status/4vtplv2v9dy3b3e6/branch/master
+.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/ionelmc/django-admin-utils?branch=master
     :alt: AppVeyor Build Status
     :target: https://ci.appveyor.com/project/ionelmc/django-admin-utils
 
-.. image:: http://img.shields.io/coveralls/ionelmc/django-admin-utils/master.png
+.. |coveralls| image:: http://img.shields.io/coveralls/ionelmc/django-admin-utils/master.png?style=flat
     :alt: Coverage Status
     :target: https://coveralls.io/r/ionelmc/django-admin-utils
 
-.. image:: http://img.shields.io/pypi/v/django-admin-utils.png
-    :alt: PYPI Package
+.. |landscape| image:: https://landscape.io/github/ionelmc/django-admin-utils/master/landscape.svg?style=flat
+    :target: https://landscape.io/github/ionelmc/django-admin-utils/master
+    :alt: Code Quality Status
+
+.. |version| image:: http://img.shields.io/pypi/v/django-admin-utils.png?style=flat
+    :alt: PyPI Package latest release
     :target: https://pypi.python.org/pypi/django-admin-utils
 
-.. image:: http://img.shields.io/pypi/dm/django-admin-utils.png
-    :alt: PYPI Package
+.. |downloads| image:: http://img.shields.io/pypi/dm/django-admin-utils.png?style=flat
+    :alt: PyPI Package monthly downloads
     :target: https://pypi.python.org/pypi/django-admin-utils
+
+.. |wheel| image:: https://pypip.in/wheel/django-admin-utils/badge.png?style=flat
+    :alt: PyPI Wheel
+    :target: https://pypi.python.org/pypi/django-admin-utils
+
+.. |supported-versions| image:: https://pypip.in/py_versions/django-admin-utils/badge.png?style=flat
+    :alt: Supported versions
+    :target: https://pypi.python.org/pypi/django-admin-utils
+
+.. |supported-implementations| image:: https://pypip.in/implementation/django-admin-utils/badge.png?style=flat
+    :alt: Supported imlementations
+    :target: https://pypi.python.org/pypi/django-admin-utils
+
+.. |scrutinizer| image:: https://img.shields.io/scrutinizer/g/ionelmc/django-admin-utils/master.png?style=flat
+    :alt: Scrtinizer Status
+    :target: https://scrutinizer-ci.com/g/ionelmc/django-admin-utils/
 
 Utility code and patterns. 
 
