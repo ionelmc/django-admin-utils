@@ -123,7 +123,7 @@ Example::
 
 Looks like this:
 
-    .. image:: docs/FoldableListFilterAdminMixin.png
+    .. image:: https://raw.githubusercontent.com/ionelmc/django-admin-utils/master/docs/FoldableListFilterAdminMixin.png
        :alt: Screenshort of FoldableListFilterAdminMixin
 
 admin_utils.mixins.FullWidthAdminMixin
@@ -141,7 +141,7 @@ Example::
 
 You probably didn't even notice you had this problem:
 
-.. image:: docs/FullWidthAdminMixin.png
+.. image:: https://raw.githubusercontent.com/ionelmc/django-admin-utils/master/docs/FullWidthAdminMixin.png
    :alt: Screenshort of FullWidthAdminMixin
 
 
