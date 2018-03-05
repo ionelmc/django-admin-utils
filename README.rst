@@ -33,15 +33,15 @@
     :alt: PyPI Package monthly downloads
     :target: https://pypi.python.org/pypi/django-admin-utils
 
-.. |wheel| image:: https://pypip.in/wheel/django-admin-utils/badge.png?style=flat
+.. |wheel| image:: https://img.shields.io/pypi/wheel/django-admin-utils.svg?style=flat
     :alt: PyPI Wheel
     :target: https://pypi.python.org/pypi/django-admin-utils
 
-.. |supported-versions| image:: https://pypip.in/py_versions/django-admin-utils/badge.png?style=flat
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/django-admin-utils.svg?style=flat
     :alt: Supported versions
     :target: https://pypi.python.org/pypi/django-admin-utils
 
-.. |supported-implementations| image:: https://pypip.in/implementation/django-admin-utils/badge.png?style=flat
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/django-admin-utils.svg?style=flat
     :alt: Supported imlementations
     :target: https://pypi.python.org/pypi/django-admin-utils
 
