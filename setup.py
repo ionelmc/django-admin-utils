@@ -75,7 +75,7 @@ setup(
     ],
     python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*',
     install_requires=[
-        'Django>=1.1',
+        'Django>=1.11',
         # eg: 'aspectlib==1.1.1', 'six>=1.7',
     ],
     extras_require={
