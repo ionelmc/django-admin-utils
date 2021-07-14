@@ -1,26 +1,28 @@
 import os
-TEMPLATE_DEBUG = DEBUG = True
+DEBUG = True
 DATABASE_ENGINE = 'sqlite3'
 DATABASE_NAME = os.path.join(os.path.dirname(__file__), 'database.sqlite')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',#DATABASE_NAME
+        'NAME': ':memory:',
+        # 'NAME': 'test.sqlite',
     },
 }
 APPEND_SLASH = True
 ALLOWED_HOSTS = "*"
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.staticfiles',
     'test_app',
 )
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -28,7 +30,22 @@ MIDDLEWARE_CLASSES = (
 )
 SITE_ID = 1
 ROOT_URLCONF = 'test_project.urls'
-TEMPLATE_DIRS = os.path.join(os.path.dirname(__file__), 'templates'),
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(os.path.dirname(__file__), 'templates')],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'debug': DEBUG,
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    }
+]
 SECRET_KEY = "DON'T MATTER"
 STATIC_URL = "/static/"
 LOGGING = {
