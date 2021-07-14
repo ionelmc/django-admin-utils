@@ -1,4 +1,5 @@
 *.py[cod]
+__pycache__
 
 # C extensions
 *.so
@@ -9,14 +10,19 @@
 dist
 build
 eggs
+.eggs
 parts
 bin
 var
 sdist
+wheelhouse
 develop-eggs
 .installed.cfg
 lib
 lib64
+venv*/
+pyvenv*/
+pip-wheel-metadata/
 
 # Installer logs
 pip-log.txt
@@ -24,19 +30,25 @@ pip-log.txt
 # Unit test / coverage reports
 .coverage
 .tox
-.coverage
 .coverage.*
+.pytest_cache/
 nosetests.xml
+coverage.xml
 htmlcov
 
 # Translations
 *.mo
 
-# Mr Developer
+# Buildout
 .mr.developer.cfg
+
+# IDE project files
 .project
 .pydevproject
 .idea
+.vscode
+*.iml
+*.komodoproject
 
 # Complexity
 output/*.html
@@ -50,5 +62,13 @@ docs/_build
 .*.sw[po]
 .build
 .ve
+.env
+.cache
+.pytest
+.benchmarks
 .bootstrap
+.appveyor.token
 *.bak
+
+# Mypy Cache
+.mypy_cache/

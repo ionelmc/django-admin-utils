@@ -1,65 +1,86 @@
 language: python
-python: 2.7
-sudo: false
+dist: xenial
+virt: lxd
+cache: false
 env:
   global:
-    LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
-  matrix:
-    - TOXENV=check
-    - TOXENV=2.6-1.4,coveralls
-    - TOXENV=2.6-1.4-nocover
-    - TOXENV=2.6-1.5,coveralls
-    - TOXENV=2.6-1.5-nocover
-    - TOXENV=2.6-1.6,coveralls
-    - TOXENV=2.6-1.6-nocover
-    - TOXENV=2.7-1.4,coveralls
-    - TOXENV=2.7-1.4-nocover
-    - TOXENV=2.7-1.5,coveralls
-    - TOXENV=2.7-1.5-nocover
-    - TOXENV=2.7-1.6,coveralls
-    - TOXENV=2.7-1.6-nocover
-    - TOXENV=2.7-1.7,coveralls
-    - TOXENV=2.7-1.7-nocover
-    - TOXENV=2.7-1.8,coveralls
-    - TOXENV=2.7-1.8-nocover
-    - TOXENV=3.3-1.5,coveralls
-    - TOXENV=3.3-1.5-nocover
-    - TOXENV=3.3-1.6,coveralls
-    - TOXENV=3.3-1.6-nocover
-    - TOXENV=3.3-1.7,coveralls
-    - TOXENV=3.3-1.7-nocover
-    - TOXENV=3.3-1.8,coveralls
-    - TOXENV=3.3-1.8-nocover
-    - TOXENV=3.4-1.5,coveralls
-    - TOXENV=3.4-1.5-nocover
-    - TOXENV=3.4-1.6,coveralls
-    - TOXENV=3.4-1.6-nocover
-    - TOXENV=3.4-1.7,coveralls
-    - TOXENV=3.4-1.7-nocover
-    - TOXENV=3.4-1.8,coveralls
-    - TOXENV=3.4-1.8-nocover
-    - TOXENV=pypy-1.4,coveralls
-    - TOXENV=pypy-1.4-nocover
-    - TOXENV=pypy-1.5,coveralls
-    - TOXENV=pypy-1.5-nocover
-    - TOXENV=pypy-1.6,coveralls
-    - TOXENV=pypy-1.6-nocover
-    - TOXENV=pypy-1.7,coveralls
-    - TOXENV=pypy-1.7-nocover
-    - TOXENV=pypy-1.8,coveralls
-    - TOXENV=pypy-1.8-nocover
+    - LD_PRELOAD=/lib/x86_64-linux-gnu/libSegFault.so
+    - SEGFAULT_SIGNALS=all
+    - LANG=en_US.UTF-8
+matrix:
+  include:
+    - python: '3.6'
+      env:
+        - TOXENV=check
+    - env:
+        - TOXENV=py27-dj11
+      python: '2.7'
+    - env:
+        - TOXENV=py36-dj22
+      python: '3.6'
+    - env:
+        - TOXENV=py36-dj31
+      python: '3.6'
+    - env:
+        - TOXENV=py36-dj32
+      python: '3.6'
+    - env:
+        - TOXENV=py37-dj22
+      python: '3.7'
+    - env:
+        - TOXENV=py37-dj31
+      python: '3.7'
+    - env:
+        - TOXENV=py37-dj32
+      python: '3.7'
+    - env:
+        - TOXENV=py38-dj22
+      python: '3.8'
+    - env:
+        - TOXENV=py38-dj31
+      python: '3.8'
+    - env:
+        - TOXENV=py38-dj32
+      python: '3.8'
+    - env:
+        - TOXENV=py39-dj22
+      python: '3.9'
+    - env:
+        - TOXENV=py39-dj31
+      python: '3.9'
+    - env:
+        - TOXENV=py39-dj32
+      python: '3.9'
+    - env:
+        - TOXENV=pypy-dj11
+      python: 'pypy'
+    - env:
+        - TOXENV=pypy3-dj22
+        - TOXPYTHON=pypy3
+      python: 'pypy3'
+    - env:
+        - TOXENV=pypy3-dj31
+        - TOXPYTHON=pypy3
+      python: 'pypy3'
+    - env:
+        - TOXENV=pypy3-dj32
+        - TOXPYTHON=pypy3
+      python: 'pypy3'
 before_install:
   - python --version
+  - uname -a
+  - lsb_release -a || true
+install:
+  - python -mpip install --progress-bar=off tox -rci/requirements.txt
   - virtualenv --version
   - pip --version
-  - uname -a
-  - lsb_release -a
-install:
-  - pip install tox
+  - tox --version
 script:
   - tox -v
+after_failure:
+  - cat .tox/log/*
+  - cat .tox/*/log/*
 notifications:
   email:
     on_success: never
     on_failure: always
-

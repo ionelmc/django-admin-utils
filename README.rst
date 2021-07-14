@@ -1,65 +1,79 @@
-===========================
-    django-admin-utils
-===========================
+========
+Overview
+========
 
-| |docs| |travis| |appveyor| |coveralls| |landscape| |scrutinizer|
-| |version| |downloads| |wheel| |supported-versions| |supported-implementations|
+.. start-badges
 
-.. |docs| image:: https://readthedocs.org/projects/django-admin-utils/badge/?style=flat
-    :target: https://readthedocs.org/projects/django-admin-utils
-    :alt: Documentation Status
+.. list-table::
+    :stub-columns: 1
 
-.. |travis| image:: http://img.shields.io/travis/ionelmc/django-admin-utils/master.png?style=flat
+    * - tests
+      - | |travis| |requires|
+        | |coveralls| |codecov|
+    * - package
+      - | |version| |wheel| |supported-versions| |supported-implementations|
+        | |commits-since|
+
+.. |travis| image:: https://api.travis-ci.com/ionelmc/django-admin-utils.svg?branch=master
     :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/ionelmc/django-admin-utils
+    :target: https://travis-ci.com/github/ionelmc/django-admin-utils
 
-.. |appveyor| image:: https://ci.appveyor.com/api/projects/status/github/ionelmc/django-admin-utils?branch=master
-    :alt: AppVeyor Build Status
-    :target: https://ci.appveyor.com/project/ionelmc/django-admin-utils
+.. |requires| image:: https://requires.io/github/ionelmc/django-admin-utils/requirements.svg?branch=master
+    :alt: Requirements Status
+    :target: https://requires.io/github/ionelmc/django-admin-utils/requirements/?branch=master
 
-.. |coveralls| image:: http://img.shields.io/coveralls/ionelmc/django-admin-utils/master.png?style=flat
+.. |coveralls| image:: https://coveralls.io/repos/ionelmc/django-admin-utils/badge.svg?branch=master&service=github
     :alt: Coverage Status
     :target: https://coveralls.io/r/ionelmc/django-admin-utils
 
-.. |landscape| image:: https://landscape.io/github/ionelmc/django-admin-utils/master/landscape.svg?style=flat
-    :target: https://landscape.io/github/ionelmc/django-admin-utils/master
-    :alt: Code Quality Status
+.. |codecov| image:: https://codecov.io/gh/ionelmc/django-admin-utils/branch/master/graphs/badge.svg?branch=master
+    :alt: Coverage Status
+    :target: https://codecov.io/github/ionelmc/django-admin-utils
 
-.. |version| image:: http://img.shields.io/pypi/v/django-admin-utils.png?style=flat
+.. |version| image:: https://img.shields.io/pypi/v/django-admin-utils.svg
     :alt: PyPI Package latest release
-    :target: https://pypi.python.org/pypi/django-admin-utils
+    :target: https://pypi.org/project/django-admin-utils
 
-.. |downloads| image:: http://img.shields.io/pypi/dm/django-admin-utils.png?style=flat
-    :alt: PyPI Package monthly downloads
-    :target: https://pypi.python.org/pypi/django-admin-utils
-
-.. |wheel| image:: https://pypip.in/wheel/django-admin-utils/badge.png?style=flat
+.. |wheel| image:: https://img.shields.io/pypi/wheel/django-admin-utils.svg
     :alt: PyPI Wheel
-    :target: https://pypi.python.org/pypi/django-admin-utils
+    :target: https://pypi.org/project/django-admin-utils
 
-.. |supported-versions| image:: https://pypip.in/py_versions/django-admin-utils/badge.png?style=flat
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/django-admin-utils.svg
     :alt: Supported versions
-    :target: https://pypi.python.org/pypi/django-admin-utils
+    :target: https://pypi.org/project/django-admin-utils
 
-.. |supported-implementations| image:: https://pypip.in/implementation/django-admin-utils/badge.png?style=flat
-    :alt: Supported imlementations
-    :target: https://pypi.python.org/pypi/django-admin-utils
+.. |supported-implementations| image:: https://img.shields.io/pypi/implementation/django-admin-utils.svg
+    :alt: Supported implementations
+    :target: https://pypi.org/project/django-admin-utils
 
-.. |scrutinizer| image:: https://img.shields.io/scrutinizer/g/ionelmc/django-admin-utils/master.png?style=flat
-    :alt: Scrtinizer Status
-    :target: https://scrutinizer-ci.com/g/ionelmc/django-admin-utils/
+.. |commits-since| image:: https://img.shields.io/github/commits-since/ionelmc/django-admin-utils/v0.3.0.svg
+    :alt: Commits since latest release
+    :target: https://github.com/ionelmc/django-admin-utils/compare/v0.3.0...master
 
-Utility code and patterns. 
 
-Requirements
+
+.. end-badges
+
+Utility code and patterns.
+
+* Free software: BSD 2-Clause License
+
+Installation
 ============
 
-:OS: Any
-:Runtime: Python 2.6, 2.7, 3.2, 3.3 or PyPy
-:Packages: Django>=1.4 (including 1.7); Django>=1.1 probably works but it's not tested, those releases should not be used (they are insecure).
+::
+
+    pip install django-admin-utils
+
+You can also install the in-development version with::
+
+    pip install https://github.com/ionelmc/django-admin-utils/archive/master.zip
+
+Documentation
+=============
 
 Terse admin.py
-==============
+--------------
 
 ::
 
@@ -82,7 +96,7 @@ If you want custom admin sites::
 
 
 Mock admin (mount your views in admin using model wrappers)
-===========================================================
+-----------------------------------------------------------
 
 Have you ever wanted a page in the admin that appears in the app list but you don't have any
 models ? Now you can have that without patching up the admin Site or the templates. Just put this
@@ -106,10 +120,10 @@ To use different admin site::
     ), "test_app", site=customsite)
 
 Admin mixins
-============
+------------
 
 admin_utils.mixins.FoldableListFilterAdminMixin
------------------------------------------------
+```````````````````````````````````````````````
 
 Adds nice filter toggling with cookie support. Largely based on `django-foldable-list-filter
 <https://bitbucket.org/Stanislas/django-foldable-list-filter>`_ but without the transition effect and no pictures.
@@ -127,7 +141,7 @@ Looks like this:
        :alt: Screenshort of FoldableListFilterAdminMixin
 
 admin_utils.mixins.FullWidthAdminMixin
---------------------------------------
+``````````````````````````````````````
 
 Make the changelist expand instead of having the width of the windows and having that nasty inner scrollbar. You never gonna notice that if
 your table is long !

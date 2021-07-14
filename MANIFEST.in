@@ -1,14 +1,11 @@
 graft docs
-graft examples
 graft src
 graft ci
 graft tests
-
-include *.komodoproject
 include .bumpversion.cfg
 include .coveragerc
-include .isort.cfg
-include .pylintrc
+include .cookiecutterrc
+include .editorconfig
 
 include AUTHORS.rst
 include CHANGELOG.rst
@@ -16,7 +13,6 @@ include CONTRIBUTING.rst
 include LICENSE
 include README.rst
 
-include conftest.py
-include tox.ini .travis.yml appveyor.yml
+include tox.ini .travis.yml .appveyor.yml .pre-commit-config.yaml
 
-global-exclude *.py[co] __pycache__ *.so *.pyd
+global-exclude *.py[cod] __pycache__/* *.so *.dylib
