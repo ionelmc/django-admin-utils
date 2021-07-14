@@ -1,10 +1,10 @@
-from django.test import TestCase
 from django.contrib.auth.models import User
+from django.test import TestCase
+
 try:
     from django.core.urlresolvers import reverse
 except ImportError:
     from django.urls import reverse
-
 
 
 class MockAdminTestCase(TestCase):
@@ -65,9 +65,12 @@ class MockAdminTestCase(TestCase):
         self.assertEqual(response.content, b"root", response)
 
     def test_runtime_error(self):
-        from .admin import make_admin_class, url
-        from admin_utils.mock import InvalidAdmin
         from test_app import views
+
+        from admin_utils.mock import InvalidAdmin
+
+        from .admin import make_admin_class
+        from .admin import url
         self.assertRaises(
             InvalidAdmin,
             make_admin_class, "Test", [

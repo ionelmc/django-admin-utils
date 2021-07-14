@@ -1,10 +1,12 @@
 from functools import update_wrapper
 
 from django.contrib import admin
+
 try:
     from django.core.urlresolvers import RegexURLPattern
 except ImportError:
     from django.urls.resolvers import RegexPattern as RegexURLPattern
+
 
 class InvalidAdmin(RuntimeError):
     pass

@@ -157,6 +157,3 @@ You probably didn't even notice you had this problem:
 
 .. image:: https://raw.githubusercontent.com/ionelmc/django-admin-utils/master/docs/FullWidthAdminMixin.png
    :alt: Screenshort of FullWidthAdminMixin
-
-
-

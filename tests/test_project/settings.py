@@ -1,4 +1,5 @@
 import os
+
 DEBUG = True
 DATABASE_ENGINE = 'sqlite3'
 DATABASE_NAME = os.path.join(os.path.dirname(__file__), 'database.sqlite')
@@ -53,7 +54,8 @@ LOGGING = {
     'disable_existing_loggers': True,
     'formatters': {
         'verbose': {
-            'format': '[%(asctime)s: %(levelname)s/%(processName)s/%(process)s] %(name)s - %(message)s \t\t\t in %(funcName)s@%(pathname)s:%(lineno)d'
+            'format': '[%(asctime)s: %(levelname)s/%(processName)s/%(process)s] %(name)s - %(message)s '
+                      '\t\t\t in %(funcName)s@%(pathname)s:%(lineno)d'
         },
     },
     'handlers': {

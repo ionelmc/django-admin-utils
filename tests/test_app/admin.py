@@ -3,9 +3,9 @@ try:
 except ImportError:
     from django.conf.urls import url
 
-from admin_utils import make_admin_class
-
 from test_app import views
+
+from admin_utils import make_admin_class
 
 make_admin_class("Test1", [
     url(r'^$', views.root, name='test_app_test1_changelist'),
