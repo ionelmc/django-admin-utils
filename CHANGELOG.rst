@@ -2,6 +2,12 @@
 Changelog
 =========
 
+
+2.0.2 (2021-07-18)
+------------------
+
+* Expose the fake hidden model as a ``fake_model`` attribute.
+
 2.0.1 (2021-07-18)
 ------------------
 

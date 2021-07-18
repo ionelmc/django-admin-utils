@@ -10,7 +10,7 @@ class InvalidAdmin(RuntimeError):
 
 
 def fake_model_factory(**kwargs):
-    type_name = f'{kwargs["model_name"]}Meta'
+    type_name = f'Fake{kwargs["model_name"]}Model'
 
     class _meta:
         abstract = kwargs.pop('abstract')
@@ -85,6 +85,8 @@ def make_admin_class(
     FakeModel = fake_model_factory(**kwargs)
 
     class FakeModelAdminClass(admin.ModelAdmin):
+        fake_model = FakeModel
+
         def has_add_permission(*args):
             return False
 
