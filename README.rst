@@ -46,9 +46,9 @@ Overview
     :alt: Supported implementations
     :target: https://pypi.org/project/django-admin-utils
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/ionelmc/django-admin-utils/v2.0.1.svg
+.. |commits-since| image:: https://img.shields.io/github/commits-since/ionelmc/django-admin-utils/v2.0.2.svg
     :alt: Commits since latest release
-    :target: https://github.com/ionelmc/django-admin-utils/compare/v2.0.1...master
+    :target: https://github.com/ionelmc/django-admin-utils/compare/v2.0.2...master
 
 
 

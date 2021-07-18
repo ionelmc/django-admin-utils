@@ -25,7 +25,7 @@ def read(*names, **kwargs):
 
 setup(
     name='django-admin-utils',
-    version='2.0.1',
+    version='2.0.2',
     license='BSD-2-Clause',
     description='Utility code and patterns.',
     long_description='%s\n%s' % (
