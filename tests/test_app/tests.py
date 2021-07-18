@@ -70,10 +70,10 @@ class MockAdminTestCase(TestCase):
         from admin_utils.mock import InvalidAdmin
 
         from .admin import make_admin_class
-        from .admin import url
+        from .admin import path
         self.assertRaises(
             InvalidAdmin,
-            make_admin_class, "Test", [
-                url(r'^$', views.root, name='whatever'),
-            ], "test_app"
+            make_admin_class, "test_app", "Test", [
+                path('', views.root, name='whatever'),
+            ],
         )

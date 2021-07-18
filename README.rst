@@ -102,22 +102,44 @@ Have you ever wanted a page in the admin that appears in the app list but you do
 models ? Now you can have that without patching up the admin Site or the templates. Just put this
 in your admin.py::
 
-    from django.conf.urls import patterns, url
+    from django.urls import path
     from admin_utils import make_admin_class
 
-    make_admin_class("Test1", patterns("test_app.views",
-        url(r'^$', 'root', name='test_app_test1_changelist'),
-        url(r'^level1/$', 'level1', name='level-1'),
-        url(r'^level1/level2/$', 'level2', name='level-2'),
-    ), "test_app")
+    make_admin_class(
+        app_label="test_app",
+        model_name="Test1",
+        urls=[
+            path('', views.root, name='test_app_test1_changelist'),
+            path('level1/', views.level1, name='level-1'),
+            path('level1/level2/', views.level2, name='level-2'),
+        ],
+    )
 
 To use different admin site::
 
-    make_admin_class("Test1", patterns("test_app.views",
-        url(r'^$', 'root', name='test_app_test1_changelist'),
-        url(r'^level1/$', 'level1', name='level-1'),
-        url(r'^level1/level2/$', 'level2', name='level-2'),
-    ), "test_app", site=customsite)
+    make_admin_class(
+        site=customsite,
+        app_label="test_app",
+        model_name="Test1",
+        urls=[
+            path('', views.root, name='test_app_test1_changelist'),
+            path('level1/', views.level1, name='level-1'),
+            path('level1/level2/', views.level2, name='level-2'),
+        ],
+    )
+
+Alternatively you can mount a single view with a decorator::
+
+    from admin_utils import register_view
+
+    @register_view(
+        site=customsite,
+        app_label="test_app",
+        model_name="Test1",
+    )
+    def root(request):
+        ...
+
 
 Admin mixins
 ------------

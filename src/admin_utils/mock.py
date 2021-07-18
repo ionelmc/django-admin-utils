@@ -1,22 +1,61 @@
 from functools import update_wrapper
 
 from django.contrib import admin
-
-try:
-    from django.core.urlresolvers import RegexURLPattern
-except ImportError:
-    from django.urls.resolvers import RegexPattern as RegexURLPattern
+from django.urls import path
+from django.urls.resolvers import URLPattern
 
 
 class InvalidAdmin(RuntimeError):
     pass
 
 
-def make_admin_class(name, urls, app_label, dont_register=False,
-                     site=admin.site):
-    label = app_label
+def fake_model_factory(**kwargs):
+    type_name = f'{kwargs["model_name"]}Meta'
 
-    required_name = "%s_%s_changelist" % (app_label, name.lower())
+    class _meta:
+        abstract = kwargs.pop('abstract')
+        app_label = kwargs.pop('app_label')
+        app_config = kwargs.pop('app_config')
+        module_name = kwargs.pop('module_name')
+        verbose_name_plural = kwargs.pop('verbose_name_plural')
+        verbose_name = kwargs.pop('verbose_name')
+        model_name = kwargs.pop('model_name')
+        object_name = kwargs.pop('object_name')
+        swapped = kwargs.pop('swapped')
+
+    if kwargs:
+        raise InvalidAdmin(f"Unexpected arguments: {kwargs}")
+    return type(type_name, (object,), {'_meta': _meta})
+
+
+def register_view(
+    app_label,
+    model_name,
+    **kwargs
+):
+    def register_admin_decorator(view_func):
+        urls = [
+            path('', view_func, name=f'{app_label}_{model_name.lower()}_changelist'),
+        ]
+        return make_admin_class(
+            app_label,
+            model_name,
+            urls,
+            **kwargs
+        )
+
+    return register_admin_decorator
+
+
+def make_admin_class(
+    app_label,
+    model_name,
+    urls,
+    register=True,
+    site=admin.site,
+    **kwargs,
+):
+    required_name = f'{app_label}_{model_name.lower()}_changelist'
     for url in urls:
         if getattr(url, 'name', None) == required_name:
             break
@@ -25,20 +64,27 @@ def make_admin_class(name, urls, app_label, dont_register=False,
             "You must have an url with the name %r otherwise the admin "
             "will fail to reverse it." % required_name
         )
+    if 'app_label' in kwargs:
+        raise InvalidAdmin(f"Got multiple values for app_label ({app_label}/{kwargs['app_label']})")
+    if 'model_name' in kwargs:
+        raise InvalidAdmin(f"Got multiple values for model_name ({model_name}/{kwargs['model_name']})")
+    for url in urls:
+        if not isinstance(url, URLPattern):
+            raise InvalidAdmin(f"Unexpected url {url}")
 
-    class _meta:
-        abstract = False
-        app_label = label
-        app_config = None
-        module_name = name.lower()
-        verbose_name_plural = name
-        verbose_name = name
-        model_name = name.lower()
-        object_name = name
-        swapped = False
-    model_class = type(name, (object,), {'_meta': _meta})
+    kwargs['model_name'] = model_name.lower()
+    kwargs['app_label'] = app_label
+    kwargs.setdefault('abstract', False)
+    kwargs.setdefault('app_config', None)
+    kwargs.setdefault('module_name', model_name.lower())
+    kwargs.setdefault('verbose_name_plural', model_name)
+    kwargs.setdefault('verbose_name', model_name)
+    kwargs.setdefault('object_name', model_name)
+    kwargs.setdefault('swapped', False)
 
-    class admin_class(admin.ModelAdmin):
+    FakeModel = fake_model_factory(**kwargs)
+
+    class FakeModelAdminClass(admin.ModelAdmin):
         def has_add_permission(*args):
             return False
 
@@ -52,23 +98,24 @@ def make_admin_class(name, urls, app_label, dont_register=False,
             def wrap(view):
                 def wrapper(*args, **kwargs):
                     return self.admin_site.admin_view(view)(*args, **kwargs)
+
+                wrapper.model_admin = self
                 return update_wrapper(wrapper, view)
 
-            return [  # they are already prefixed
-                RegexURLPattern(
-                    str(url.regex.pattern),
-                    wrap(url.callback),
-                    url.default_args,
-                    url.name
+            return [
+                URLPattern(
+                    pattern=url.pattern,
+                    callback=wrap(url.callback),
+                    default_args=url.default_args,
+                    name=url.name,
                 )
-                if isinstance(url, RegexURLPattern)
-                else url
                 for url in urls
             ]
 
         @classmethod
         def register(cls):
-            site.register((model_class,), cls)
-    if not dont_register:
-        admin_class.register()
-    return admin_class
+            site.register((FakeModel,), cls)
+
+    if register:
+        FakeModelAdminClass.register()
+    return FakeModelAdminClass

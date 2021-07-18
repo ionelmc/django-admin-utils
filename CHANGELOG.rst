@@ -2,6 +2,19 @@
 Changelog
 =========
 
+2.0.0 (2021-07-18)
+------------------
+
+* Drop support for Python 2.7 and Django 1.11.
+* Added the ``register_view`` decorator.
+* Update examples/readme.
+* Various bugfixes.
+
+1.0.0 (2021-07-14)
+------------------
+
+* Fixed a bunch of regressions with Django 3.2.
+
 0.3.0 (2014-02-02)
 ------------------
 

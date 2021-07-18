@@ -13,9 +13,6 @@ matrix:
       env:
         - TOXENV=check
     - env:
-        - TOXENV=py27-dj11
-      python: '2.7'
-    - env:
         - TOXENV=py36-dj22
       python: '3.6'
     - env:
