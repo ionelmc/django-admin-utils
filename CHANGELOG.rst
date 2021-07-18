@@ -2,6 +2,11 @@
 Changelog
 =========
 
+2.0.1 (2021-07-18)
+------------------
+
+* Add missing import for ``admin_utils.register_view``.
+
 2.0.0 (2021-07-18)
 ------------------
 
