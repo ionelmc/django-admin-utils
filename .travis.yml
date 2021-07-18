@@ -49,9 +49,6 @@ matrix:
         - TOXENV=py39-dj32
       python: '3.9'
     - env:
-        - TOXENV=pypy-dj11
-      python: 'pypy'
-    - env:
         - TOXENV=pypy3-dj22
         - TOXPYTHON=pypy3
       python: 'pypy3'
