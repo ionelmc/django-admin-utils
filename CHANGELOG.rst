@@ -2,8 +2,12 @@
 Changelog
 =========
 
+2.0.4 (2021-07-19)
+------------------
 
-2.0.3 (2021-07-18)
+* Fix mock admin regression and add test.
+
+2.0.3 (2021-07-19)
 ------------------
 
 * Make the mock admin behave as without editable permissions (implemented the missing ``has_view_permission`` method).

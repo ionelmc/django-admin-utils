@@ -88,7 +88,7 @@ def make_admin_class(
         fake_model = FakeModel
 
         def has_view_permission(*args, **kwargs):
-            return False
+            return True
 
         def has_add_permission(*args, **kwargs):
             return False
