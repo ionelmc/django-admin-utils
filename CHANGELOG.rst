@@ -3,6 +3,11 @@ Changelog
 =========
 
 
+2.0.3 (2021-07-18)
+------------------
+
+* Make the mock admin behave as without editable permissions (implemented the missing ``has_view_permission`` method).
+
 2.0.2 (2021-07-18)
 ------------------
 

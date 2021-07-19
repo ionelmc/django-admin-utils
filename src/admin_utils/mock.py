@@ -87,13 +87,16 @@ def make_admin_class(
     class FakeModelAdminClass(admin.ModelAdmin):
         fake_model = FakeModel
 
-        def has_add_permission(*args):
+        def has_view_permission(*args, **kwargs):
             return False
 
-        def has_change_permission(*args):
-            return True
+        def has_add_permission(*args, **kwargs):
+            return False
 
-        def has_delete_permission(*args):
+        def has_change_permission(*args, **kwargs):
+            return False
+
+        def has_delete_permission(*args, **kwargs):
             return False
 
         def get_urls(self):
