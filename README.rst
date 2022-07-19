@@ -8,15 +8,15 @@ Overview
     :stub-columns: 1
 
     * - tests
-      - | |travis| |requires|
+      - | |github-actions| |requires|
         | |coveralls| |codecov|
     * - package
       - | |version| |wheel| |supported-versions| |supported-implementations|
         | |commits-since|
 
-.. |travis| image:: https://api.travis-ci.com/ionelmc/django-admin-utils.svg?branch=master
-    :alt: Travis-CI Build Status
-    :target: https://travis-ci.com/github/ionelmc/django-admin-utils
+.. |github-actions| image:: https://github.com/ionelmc/django-admin-utils/actions/workflows/github-actions.yml/badge.svg
+    :alt: GitHub Actions Build Status
+    :target: https://github.com/ionelmc/django-admin-utils/actions
 
 .. |requires| image:: https://requires.io/github/ionelmc/django-admin-utils/requirements.svg?branch=master
     :alt: Requirements Status
@@ -68,6 +68,7 @@ Installation
 You can also install the in-development version with::
 
     pip install https://github.com/ionelmc/django-admin-utils/archive/master.zip
+
 
 Documentation
 =============

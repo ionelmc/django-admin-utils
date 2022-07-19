@@ -11,7 +11,8 @@ DATABASES = {
     },
 }
 APPEND_SLASH = True
-ALLOWED_HOSTS = "*"
+USE_TZ = True
+ALLOWED_HOSTS = ("*",)
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',

@@ -16,39 +16,42 @@ default_context:
     command_line_interface: no
     command_line_interface_bin_name: '-'
     coveralls: yes
-    coveralls_token: DJimqQ3o02x2Hzihr7RhKsvLQr7iXyAoy
     distribution_name: django-admin-utils
     email: contact@ionelmc.ro
     full_name: Ionel Cristian Mărieș
-    legacy_python: yes
+    github_actions: yes
+    github_actions_osx: no
+    github_actions_windows: no
+    legacy_python: no
     license: BSD 2-Clause License
     linter: flake8
     package_name: admin_utils
     pre_commit: yes
+    pre_commit_formatter: black
     project_name: Django Admin Utils
     project_short_description: Utility code and patterns.
     pypi_badge: yes
     pypi_disable_upload: no
-    release_date: '2014-02-02'
+    release_date: '2021-07-19'
     repo_hosting: github.com
     repo_hosting_domain: github.com
+    repo_main_branch: master
     repo_name: django-admin-utils
     repo_username: ionelmc
     requiresio: yes
     scrutinizer: no
+    setup_py_uses_pytest_runner: no
     setup_py_uses_setuptools_scm: no
-    setup_py_uses_test_runner: no
     sphinx_docs: no
     sphinx_docs_hosting: https://django-admin-utils.readthedocs.io/
     sphinx_doctest: no
     sphinx_theme: sphinx-rtd-theme
-    test_matrix_configurator: yes
+    test_matrix_configurator: no
     test_matrix_separate_coverage: no
-    test_runner: pytest
-    travis: yes
+    travis: no
     travis_osx: no
-    version: 0.3.0
+    version: 2.0.4
     version_manager: bump2version
     website: https://blog.ionelmc.ro
     year_from: '2012'
-    year_to: '2021'
+    year_to: '2022'
