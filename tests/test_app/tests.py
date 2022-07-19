@@ -11,8 +11,11 @@ except ImportError:
 class MockAdminTestCase(TestCase):
     def setUp(self):
         self.user = User(
-            username='test', email='test@example.com', is_active=True,
-            is_staff=True, is_superuser=True,
+            username='test',
+            email='test@example.com',
+            is_active=True,
+            is_staff=True,
+            is_superuser=True,
         )
         self.user.set_password('test')
         self.user.save()
@@ -92,7 +95,12 @@ class MockAdminTestCase(TestCase):
 
         from .admin import make_admin_class
         from .admin import path
+
         with pytest.raises(InvalidAdmin):
-            make_admin_class("test_app", "Test", [
-                path('', views.root, name='whatever'),
-            ],)
+            make_admin_class(
+                "test_app",
+                "Test",
+                [
+                    path('', views.root, name='whatever'),
+                ],
+            )

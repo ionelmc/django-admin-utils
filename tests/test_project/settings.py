@@ -56,16 +56,11 @@ LOGGING = {
     'formatters': {
         'verbose': {
             'format': '[%(asctime)s: %(levelname)s/%(processName)s/%(process)s] %(name)s - %(message)s '
-                      '\t\t\t in %(funcName)s@%(pathname)s:%(lineno)d'
+            '\t\t\t in %(funcName)s@%(pathname)s:%(lineno)d'
         },
     },
     'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose',
-            'stream': 'ext://sys.stderr'
-        },
+        'console': {'level': 'DEBUG', 'class': 'logging.StreamHandler', 'formatter': 'verbose', 'stream': 'ext://sys.stderr'},
     },
     'loggers': {
         'django': {
@@ -78,5 +73,5 @@ LOGGING = {
         'handlers': ['console'],
         'level': 'DEBUG',
         'propagate': True,
-    }
+    },
 }

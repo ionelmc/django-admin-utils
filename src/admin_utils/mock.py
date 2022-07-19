@@ -28,21 +28,12 @@ def fake_model_factory(**kwargs):
     return type(type_name, (object,), {'_meta': _meta})
 
 
-def register_view(
-    app_label,
-    model_name,
-    **kwargs
-):
+def register_view(app_label, model_name, **kwargs):
     def register_admin_decorator(view_func):
         urls = [
             path('', view_func, name=f'{app_label}_{model_name.lower()}_changelist'),
         ]
-        return make_admin_class(
-            app_label,
-            model_name,
-            urls,
-            **kwargs
-        )
+        return make_admin_class(app_label, model_name, urls, **kwargs)
 
     return register_admin_decorator
 
@@ -60,10 +51,7 @@ def make_admin_class(
         if getattr(url, 'name', None) == required_name:
             break
     else:
-        raise InvalidAdmin(
-            "You must have an url with the name %r otherwise the admin "
-            "will fail to reverse it." % required_name
-        )
+        raise InvalidAdmin(f"You must have an url with the name {required_name!r} otherwise the admin will fail to reverse it.")
     if 'app_label' in kwargs:
         raise InvalidAdmin(f"Got multiple values for app_label ({app_label}/{kwargs['app_label']})")
     if 'model_name' in kwargs:
