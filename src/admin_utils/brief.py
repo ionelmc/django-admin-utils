@@ -10,4 +10,4 @@ def register(model, site=admin.site):
 
 
 def inline(model, klass=admin.TabularInline, **options):
-    return type("%sInlineAdmin" % model.__name__, (klass,), dict(model=model, **options))
+    return type(f'{model.__name__}InlineAdmin', (klass,), dict(model=model, **options))

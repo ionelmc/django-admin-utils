@@ -1,8 +1,9 @@
-import os
+from pathlib import Path
 
+BASE_DIR = Path(__file__).parent
 DEBUG = True
 DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = os.path.join(os.path.dirname(__file__), 'database.sqlite')
+DATABASE_NAME = str(BASE_DIR / 'database.sqlite')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -12,7 +13,7 @@ DATABASES = {
 }
 APPEND_SLASH = True
 USE_TZ = True
-ALLOWED_HOSTS = ("*",)
+ALLOWED_HOSTS = ('*',)
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
@@ -35,7 +36,7 @@ ROOT_URLCONF = 'test_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(os.path.dirname(__file__), 'templates')],
+        'DIRS': [str(BASE_DIR / 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'debug': DEBUG,
@@ -48,8 +49,8 @@ TEMPLATES = [
         },
     }
 ]
-SECRET_KEY = "DON'T MATTER"
-STATIC_URL = "/static/"
+SECRET_KEY = "DON'T MATTER"  # noqa: S105
+STATIC_URL = '/static/'
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': True,

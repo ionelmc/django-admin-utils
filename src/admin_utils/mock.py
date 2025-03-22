@@ -22,9 +22,10 @@ def fake_model_factory(**kwargs):
         model_name = kwargs.pop('model_name')
         object_name = kwargs.pop('object_name')
         swapped = kwargs.pop('swapped')
+        is_composite_pk = False
 
     if kwargs:
-        raise InvalidAdmin(f"Unexpected arguments: {kwargs}")
+        raise InvalidAdmin(f'Unexpected arguments: {kwargs}')
     return type(type_name, (object,), {'_meta': _meta})
 
 
@@ -51,14 +52,14 @@ def make_admin_class(
         if getattr(url, 'name', None) == required_name:
             break
     else:
-        raise InvalidAdmin(f"You must have an url with the name {required_name!r} otherwise the admin will fail to reverse it.")
+        raise InvalidAdmin(f'You must have an url with the name {required_name!r} otherwise the admin will fail to reverse it.')
     if 'app_label' in kwargs:
-        raise InvalidAdmin(f"Got multiple values for app_label ({app_label}/{kwargs['app_label']})")
+        raise InvalidAdmin(f'Got multiple values for app_label ({app_label}/{kwargs["app_label"]})')
     if 'model_name' in kwargs:
-        raise InvalidAdmin(f"Got multiple values for model_name ({model_name}/{kwargs['model_name']})")
+        raise InvalidAdmin(f'Got multiple values for model_name ({model_name}/{kwargs["model_name"]})')
     for url in urls:
         if not isinstance(url, URLPattern):
-            raise InvalidAdmin(f"Unexpected url {url}")
+            raise InvalidAdmin(f'Unexpected url {url}')
 
     kwargs['model_name'] = model_name.lower()
     kwargs['app_label'] = app_label

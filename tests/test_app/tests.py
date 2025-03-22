@@ -19,7 +19,7 @@ class MockAdminTestCase(TestCase):
         )
         self.user.set_password('test')
         self.user.save()
-        self.client.login(username='test', password='test')
+        self.client.login(username='test', password='test')  # noqa:S106
 
     def test_admin_not_broken(self):
         response = self.client.get('/admin/')
@@ -62,7 +62,7 @@ class MockAdminTestCase(TestCase):
         self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
         response = self.client.get(url)
         assert response.status_code == 200, response
-        assert response.content == b"root", response
+        assert response.content == b'root', response
 
     def test_admin_1_level1(self):
         url = reverse('admin:level-1')
@@ -70,7 +70,7 @@ class MockAdminTestCase(TestCase):
         self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
         response = self.client.get(url)
         assert response.status_code == 200, response
-        assert response.content == b"level1", response
+        assert response.content == b'level1', response
 
     def test_admin_1_level1_level2(self):
         url = reverse('admin:level-2')
@@ -78,7 +78,7 @@ class MockAdminTestCase(TestCase):
         self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
         response = self.client.get(url)
         assert response.status_code == 200, response
-        assert response.content == b"level2", response
+        assert response.content == b'level2', response
 
     def test_admin_2_root(self):
         url = reverse('admin:test_app_test2_changelist')
@@ -86,20 +86,19 @@ class MockAdminTestCase(TestCase):
         self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
         response = self.client.get(url)
         assert response.status_code == 200, response
-        assert response.content == b"root", response
+        assert response.content == b'root', response
 
     def test_runtime_error(self):
-        from test_app import views
-
         from admin_utils.mock import InvalidAdmin
+        from test_app import views
 
         from .admin import make_admin_class
         from .admin import path
 
         with pytest.raises(InvalidAdmin):
             make_admin_class(
-                "test_app",
-                "Test",
+                'test_app',
+                'Test',
                 [
                     path('', views.root, name='whatever'),
                 ],

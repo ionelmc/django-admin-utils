@@ -1,5 +1,5 @@
 name: build
-on: [push, pull_request]
+on: [push, pull_request, workflow_dispatch]
 jobs:
   test:
     name: ${{ matrix.name }}
@@ -10,104 +10,57 @@ jobs:
       matrix:
         include:
           - name: 'check'
-            python: '3.9'
-            toxpython: 'python3.9'
+            python: '3.11'
+            toxpython: 'python3.11'
             tox_env: 'check'
             os: 'ubuntu-latest'
-          - name: 'docs'
-            python: '3.9'
-            toxpython: 'python3.9'
-            tox_env: 'docs'
-            os: 'ubuntu-latest'
-          - name: 'py36-dj32 (ubuntu)'
-            python: '3.6'
-            toxpython: 'python3.6'
-            python_arch: 'x64'
-            tox_env: 'py36-dj32'
-            os: 'ubuntu-latest'
-          - name: 'py36-dj40 (ubuntu)'
-            python: '3.6'
-            toxpython: 'python3.6'
-            python_arch: 'x64'
-            tox_env: 'py36-dj40'
-            os: 'ubuntu-latest'
-          - name: 'py37-dj32 (ubuntu)'
-            python: '3.7'
-            toxpython: 'python3.7'
-            python_arch: 'x64'
-            tox_env: 'py37-dj32'
-            os: 'ubuntu-latest'
-          - name: 'py37-dj40 (ubuntu)'
-            python: '3.7'
-            toxpython: 'python3.7'
-            python_arch: 'x64'
-            tox_env: 'py37-dj40'
-            os: 'ubuntu-latest'
-          - name: 'py38-dj32 (ubuntu)'
-            python: '3.8'
-            toxpython: 'python3.8'
-            python_arch: 'x64'
-            tox_env: 'py38-dj32'
-            os: 'ubuntu-latest'
-          - name: 'py38-dj40 (ubuntu)'
-            python: '3.8'
-            toxpython: 'python3.8'
-            python_arch: 'x64'
-            tox_env: 'py38-dj40'
-            os: 'ubuntu-latest'
-          - name: 'py39-dj32 (ubuntu)'
+          - name: 'py39 (ubuntu)'
             python: '3.9'
             toxpython: 'python3.9'
             python_arch: 'x64'
-            tox_env: 'py39-dj32'
+            tox_env: 'py39'
             os: 'ubuntu-latest'
-          - name: 'py39-dj40 (ubuntu)'
-            python: '3.9'
-            toxpython: 'python3.9'
-            python_arch: 'x64'
-            tox_env: 'py39-dj40'
-            os: 'ubuntu-latest'
-          - name: 'py310-dj32 (ubuntu)'
+          - name: 'py310 (ubuntu)'
             python: '3.10'
             toxpython: 'python3.10'
             python_arch: 'x64'
-            tox_env: 'py310-dj32'
+            tox_env: 'py310'
             os: 'ubuntu-latest'
-          - name: 'py310-dj40 (ubuntu)'
-            python: '3.10'
-            toxpython: 'python3.10'
+          - name: 'py311 (ubuntu)'
+            python: '3.11'
+            toxpython: 'python3.11'
             python_arch: 'x64'
-            tox_env: 'py310-dj40'
+            tox_env: 'py311'
             os: 'ubuntu-latest'
-          - name: 'pypy37-dj32 (ubuntu)'
-            python: 'pypy-3.7'
-            toxpython: 'pypy3.7'
+          - name: 'py312 (ubuntu)'
+            python: '3.12'
+            toxpython: 'python3.12'
             python_arch: 'x64'
-            tox_env: 'pypy37-dj32'
+            tox_env: 'py312'
             os: 'ubuntu-latest'
-          - name: 'pypy37-dj40 (ubuntu)'
-            python: 'pypy-3.7'
-            toxpython: 'pypy3.7'
+          - name: 'py313 (ubuntu)'
+            python: '3.13'
+            toxpython: 'python3.13'
             python_arch: 'x64'
-            tox_env: 'pypy37-dj40'
+            tox_env: 'py313'
             os: 'ubuntu-latest'
-          - name: 'pypy38-dj32 (ubuntu)'
-            python: 'pypy-3.8'
-            toxpython: 'pypy3.8'
+          - name: 'pypy39 (ubuntu)'
+            python: 'pypy-3.9'
+            toxpython: 'pypy3.9'
             python_arch: 'x64'
-            tox_env: 'pypy38-dj32'
+            tox_env: 'pypy39'
             os: 'ubuntu-latest'
-          - name: 'pypy38-dj40 (ubuntu)'
-            python: 'pypy-3.8'
-            toxpython: 'pypy3.8'
+          - name: 'pypy310 (ubuntu)'
+            python: 'pypy-3.10'
+            toxpython: 'pypy3.10'
             python_arch: 'x64'
-            tox_env: 'pypy38-dj40'
+            tox_env: 'pypy310'
             os: 'ubuntu-latest'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - uses: actions/setup-python@v2
+    - uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python }}
         architecture: ${{ matrix.python_arch }}
@@ -123,3 +76,14 @@ jobs:
         TOXPYTHON: '${{ matrix.toxpython }}'
       run: >
         tox -e ${{ matrix.tox_env }} -v
+  finish:
+    needs: test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: coverallsapp/github-action@v2
+      with:
+        parallel-finished: true
+    - uses: codecov/codecov-action@v3
+      with:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
