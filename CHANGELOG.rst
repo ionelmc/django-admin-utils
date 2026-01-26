@@ -2,6 +2,12 @@
 Changelog
 =========
 
+2.2.0 (2026-01-26)
+------------------
+
+* Added Django 6.0 in test grid. Dropped Django 5.0 or older.
+* Added a missing 'label' attribute to fake models. Should allow you to use `pghistory.admin` as long as you have an adequate `get_model` in your `AppConfig`.
+
 2.1.0 (2025-03-22)
 ------------------
 

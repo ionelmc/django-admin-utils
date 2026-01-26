@@ -23,6 +23,7 @@ def fake_model_factory(**kwargs):
         object_name = kwargs.pop('object_name')
         swapped = kwargs.pop('swapped')
         is_composite_pk = False
+        label = f'{app_label}.{model_name}'
 
     if kwargs:
         raise InvalidAdmin(f'Unexpected arguments: {kwargs}')

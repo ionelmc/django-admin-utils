@@ -15,6 +15,8 @@ APPEND_SLASH = True
 USE_TZ = True
 ALLOWED_HOSTS = ('*',)
 INSTALLED_APPS = (
+    'pghistory',
+    'pghistory.admin',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -23,7 +25,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'test_app',
+    'test_app.apps.TestAppConfig',
 )
 MIDDLEWARE = (
     'django.contrib.sessions.middleware.SessionMiddleware',
