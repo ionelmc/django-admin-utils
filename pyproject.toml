@@ -12,7 +12,7 @@ dynamic = [
     "readme",
 ]
 name = "django-admin-utils"
-version = "2.1.0"
+version = "2.2.0"
 license = "BSD-2-Clause"
 license-files = ["LICENSE"]
 description = "Utility code and patterns."
