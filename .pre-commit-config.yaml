@@ -1,19 +1,25 @@
 # To install the git pre-commit hooks run:
-#   pre-commit install --install-hooks
+#   prek install --install-hooks --overwrite
 # To update the versions:
-#   pre-commit autoupdate
+#   prek autoupdate
 exclude: '^(\.tox|ci/templates|\.bumpversion\.cfg)(/|$)'
 # Note the order is intentional to avoid multiple passes of the hooks
 repos:
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.11.2
+    rev: v0.14.14
     hooks:
       - id: ruff
-        args: [--fix, --exit-non-zero-on-fix, --show-fixes, --unsafe-fixes]
+        args: [--fix, --exit-non-zero-on-fix, --show-fixes]
       - id: ruff-format
+  - repo: https://github.com/ComPWA/taplo-pre-commit
+    rev: v0.9.3
+    hooks:
+      - id: taplo-format
+      - id: taplo-lint
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v5.0.0
+    rev: v6.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
+      - id: mixed-line-ending
       - id: debug-statements

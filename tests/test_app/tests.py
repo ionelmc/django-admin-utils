@@ -1,11 +1,13 @@
 import pytest
 from django.contrib.auth.models import User
 from django.test import TestCase
+from django.urls import reverse
 
-try:
-    from django.core.urlresolvers import reverse
-except ImportError:
-    from django.urls import reverse
+from admin_utils.mock import InvalidAdmin
+from test_app import views
+
+from .admin import make_admin_class
+from .admin import path
 
 
 class MockAdminTestCase(TestCase):
@@ -89,12 +91,6 @@ class MockAdminTestCase(TestCase):
         assert response.content == b'root', response
 
     def test_runtime_error(self):
-        from admin_utils.mock import InvalidAdmin
-        from test_app import views
-
-        from .admin import make_admin_class
-        from .admin import path
-
         with pytest.raises(InvalidAdmin):
             make_admin_class(
                 'test_app',
@@ -103,3 +99,11 @@ class MockAdminTestCase(TestCase):
                     path('', views.root, name='whatever'),
                 ],
             )
+
+    def test_page(self):
+        url = reverse('admin:test_app_page_changelist')
+        assert url == '/admin/test_app/page/'
+        self.assertRedirects(self.client.get(url.rstrip('/')), url, 301)
+        response = self.client.get(url)
+        assert response.status_code == 200, response
+        assert response.content.startswith(b'<!DOCTYPE')

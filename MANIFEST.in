@@ -9,6 +9,8 @@ include .coveragerc
 include .editorconfig
 include .github/workflows/github-actions.yml
 include .pre-commit-config.yaml
+include .taplo.toml
+include pyproject.toml
 include pytest.ini
 include tox.ini
 

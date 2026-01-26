@@ -2,7 +2,6 @@
 Overview
 ========
 
-.. start-badges
 
 .. list-table::
     :stub-columns: 1
@@ -11,42 +10,31 @@ Overview
       - |github-actions| |coveralls| |codecov|
     * - package
       - |version| |wheel| |supported-versions| |supported-implementations| |commits-since|
-
 .. |github-actions| image:: https://github.com/ionelmc/django-admin-utils/actions/workflows/github-actions.yml/badge.svg
     :alt: GitHub Actions Build Status
     :target: https://github.com/ionelmc/django-admin-utils/actions
-
 .. |coveralls| image:: https://coveralls.io/repos/github/ionelmc/django-admin-utils/badge.svg?branch=master
     :alt: Coverage Status
     :target: https://coveralls.io/github/ionelmc/django-admin-utils?branch=master
-
 .. |codecov| image:: https://codecov.io/gh/ionelmc/django-admin-utils/branch/master/graphs/badge.svg?branch=master
     :alt: Coverage Status
     :target: https://app.codecov.io/github/ionelmc/django-admin-utils
-
 .. |version| image:: https://img.shields.io/pypi/v/django-admin-utils.svg
     :alt: PyPI Package latest release
     :target: https://pypi.org/project/django-admin-utils
-
 .. |wheel| image:: https://img.shields.io/pypi/wheel/django-admin-utils.svg
     :alt: PyPI Wheel
     :target: https://pypi.org/project/django-admin-utils
-
 .. |supported-versions| image:: https://img.shields.io/pypi/pyversions/django-admin-utils.svg
     :alt: Supported versions
     :target: https://pypi.org/project/django-admin-utils
-
 .. |supported-implementations| image:: https://img.shields.io/pypi/implementation/django-admin-utils.svg
     :alt: Supported implementations
     :target: https://pypi.org/project/django-admin-utils
-
 .. |commits-since| image:: https://img.shields.io/github/commits-since/ionelmc/django-admin-utils/v2.1.0.svg
     :alt: Commits since latest release
     :target: https://github.com/ionelmc/django-admin-utils/compare/v2.1.0...master
 
-
-
-.. end-badges
 
 Utility code and patterns.
 
